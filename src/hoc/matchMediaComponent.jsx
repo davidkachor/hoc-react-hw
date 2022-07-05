@@ -28,7 +28,7 @@ const matchMediaComponent = (
 		}
 
 		render() {
-			const property = {}
+			const property = {mediaQuery}
 			property[propName] = this.state.matches
 
 			return (

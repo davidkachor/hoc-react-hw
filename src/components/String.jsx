@@ -16,7 +16,7 @@ class String extends Component {
 			content = 'This is printing'
 		}
 
-		return <p>{content}</p>
+		return <p style={{fontSize: '50px'}}>{content}</p>
 	}
 }
 
