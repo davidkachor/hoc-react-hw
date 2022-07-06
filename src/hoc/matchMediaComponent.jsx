@@ -28,12 +28,13 @@ const matchMediaComponent = (
 		}
 
 		render() {
-			const property = {mediaQuery}
-			property[propName] = this.state.matches
+			const properties = {
+				...this.props,
+				mediaQuery,
+				[propName]: this.state.matches,
+			}
 
-			return (
-				<WrappedComponent {...property}>{this.props.children}</WrappedComponent>
-			)
+			return <WrappedComponent {...properties} />
 		}
 	}
 	return MatchMediaComponent

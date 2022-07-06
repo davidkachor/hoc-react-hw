@@ -6,8 +6,8 @@ const deviceType = WrappedComponent => {
 			super(props)
 			this.state = {
 				isPhone:
-					matchMedia('screen and (max-width:641px)')
-						.matches && !matchMedia('print').matches,
+					matchMedia('screen and (max-width:641px)').matches &&
+					!matchMedia('print').matches,
 				isTablet:
 					matchMedia('screen and (max-width:1025px) and (min-width:641px)')
 						.matches && !matchMedia('print').matches,
@@ -21,8 +21,8 @@ const deviceType = WrappedComponent => {
 		resizeHandler() {
 			this.setState({
 				isPhone:
-					matchMedia('screen and (max-width:641px)')
-						.matches && !matchMedia('print').matches,
+					matchMedia('screen and (max-width:641px)').matches &&
+					!matchMedia('print').matches,
 				isTablet:
 					matchMedia('screen and (max-width:1025px) and (min-width:641px)')
 						.matches && !matchMedia('print').matches,
@@ -74,18 +74,8 @@ const deviceType = WrappedComponent => {
 		}
 
 		render() {
-			const { isPhone, isTablet, isDesktop, isPrinting } = this.state
-
-			return (
-				<WrappedComponent
-					isPhone={isPhone}
-					isTablet={isTablet}
-					isDesktop={isDesktop}
-					isPrinting={isPrinting}
-				>
-					{this.props.children}
-				</WrappedComponent>
-			)
+			const properties = { ...this.state, ...this.props }
+			return <WrappedComponent {...properties} />
 		}
 	}
 	return DeviceTypeComponent
